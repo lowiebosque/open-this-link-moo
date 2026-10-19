@@ -1,0 +1,274 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe1ec, #ffc2d9, #f8b4d9, #fce4ec);
+    color: #742b4b;
+}
+
+.hearts-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear forwards;
+    opacity: 0.65;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.7; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 430px;
+    padding: 35px 25px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid white;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(155, 52, 100, 0.18);
+    backdrop-filter: blur(12px);
+    animation: cardAppear 0.8s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.top-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: #ffe5ef;
+    color: #d94d83;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.emoji {
+    margin: 25px 0 15px;
+    font-size: 75px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.1); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+}
+
+h1 {
+    color: #d63376;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #987083;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+    color: #f06292;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #f5c8d9;
+}
+
+.question {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #80536a;
+}
+
+.buttons-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    height: 90px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 14px 25px;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff4f93, #e91e63);
+    color: white;
+    box-shadow: 0 7px 18px rgba(233, 30, 99, 0.25);
+}
+
+.yes-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.35);
+}
+
+.no-btn {
+    background: #f3edf0;
+    color: #947584;
+    border: 1px solid #eadde3;
+    position: relative;
+    z-index: 2;
+}
+
+.no-btn:hover {
+    background: #eee3e9;
+}
+
+.hint {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #b28a9c;
+    min-height: 18px;
+}
+
+.footer {
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid #f7dce7;
+    color: #cf8ca7;
+    font-size: 12px;
+}
+
+.success-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(104, 35, 66, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.success-screen.show {
+    display: flex;
+    animation: fadeIn 0.35s ease;
+}
+
+.success-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 25px;
+    text-align: center;
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(100, 20, 60, 0.2);
+    animation: popIn 0.45s ease;
+}
+
+.success-emoji {
+    font-size: 75px;
+    margin-bottom: 15px;
+}
+
+.success-card h1 {
+    font-size: 38px;
+}
+
+.success-card p {
+    line-height: 1.8;
+    color: #93677b;
+}
+
+.success-card .love-note {
+    margin: 15px 0 25px;
+    font-size: 14px;
+}
+
+.success-card .yes-btn {
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 400px) {
+    .card { padding: 28px 18px 20px; }
+    h1 { font-size: 28px; }
+    .emoji { font-size: 65px; }
+    button { padding: 13px 21px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
